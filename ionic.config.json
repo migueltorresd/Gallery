@@ -1,0 +1,7 @@
+{
+  "name": "miAppTienda",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

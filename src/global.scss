@@ -1,0 +1,314 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+@import "@ionic/angular/css/palettes/dark.always.css";
+/* @import "@ionic/angular/css/palettes/dark.class.css"; */
+/* @import "@ionic/angular/css/palettes/dark.system.css"; */
+
+/**
+ * Futuristic Cyberpunk Theme Variables
+ * -----------------------------------------------------
+ */
+:root {
+  /* Neon color palette - Futuristic */
+  --ion-color-primary: #00ffff;
+  --ion-color-primary-rgb: 0, 255, 255;
+  --ion-color-primary-contrast: #000000;
+  --ion-color-primary-contrast-rgb: 0, 0, 0;
+  --ion-color-primary-shade: #00e6e6;
+  --ion-color-primary-tint: #1affff;
+
+  /* Neon secondary - Electric purple */
+  --ion-color-secondary: #ff00ff;
+  --ion-color-secondary-rgb: 255, 0, 255;
+  --ion-color-secondary-contrast: #000000;
+  --ion-color-secondary-contrast-rgb: 0, 0, 0;
+  --ion-color-secondary-shade: #e600e6;
+  --ion-color-secondary-tint: #ff1aff;
+
+  /* Accent colors */
+  --neon-green: #39ff14;
+  --neon-blue: #00ffff;
+  --neon-purple: #ff00ff;
+  --neon-orange: #ff9500;
+  --electric-blue: #0080ff;
+  
+  /* Cyberpunk backgrounds */
+  --ion-background-color: #0a0a0f;
+  --ion-background-color-rgb: 10, 10, 15;
+  
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: 255, 255, 255;
+  
+  --ion-color-step-50: #1a1a2e;
+  --ion-color-step-100: #16213e;
+  --ion-color-step-150: #0f3460;
+  --ion-color-step-200: #533483;
+  --ion-color-step-250: #7209b7;
+  
+  /* Futuristic surface colors */
+  --ion-card-background: linear-gradient(145deg, rgba(26, 26, 46, 0.8), rgba(22, 33, 62, 0.6));
+  --ion-toolbar-background: rgba(10, 10, 15, 0.95);
+  --ion-item-background: rgba(26, 26, 46, 0.3);
+  
+  /* Neon glow effects */
+  --neon-glow-cyan: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 20px #00ffff;
+  --neon-glow-purple: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff;
+  --neon-glow-green: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 20px #39ff14;
+  --neon-glow-blue: 0 0 5px #0080ff, 0 0 10px #0080ff, 0 0 20px #0080ff;
+  
+  /* Futuristic shadows and effects */
+  --ion-box-shadow: 0 8px 32px rgba(0, 255, 255, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  --ion-box-shadow-lg: 0 15px 35px rgba(255, 0, 255, 0.2), 0 5px 15px rgba(0, 255, 255, 0.1);
+  
+  /* Rounded corners for futuristic look */
+  --ion-border-radius: 20px;
+  
+  /* Grid pattern overlay */
+  --grid-pattern: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 255, 255, 0.03) 2px,
+    rgba(0, 255, 255, 0.03) 4px
+  );
+}
+
+/**
+ * Futuristic Global Styles
+ * -----------------------------------------------------
+ */
+
+/* Cyberpunk body background with grid pattern */
+body {
+  background: var(--ion-background-color);
+  background-image: 
+    var(--grid-pattern),
+    radial-gradient(circle at 20% 80%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 0, 255, 0.1) 0%, transparent 50%);
+  background-attachment: fixed;
+}
+
+/* Futuristic scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(26, 26, 46, 0.5);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--neon-blue), var(--neon-purple));
+  border-radius: 10px;
+  box-shadow: var(--neon-glow-cyan);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  box-shadow: var(--neon-glow-purple);
+}
+
+/* Global animations with glow effects */
+* {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Futuristic card styles */
+ion-card {
+  background: var(--ion-card-background) !important;
+  border-radius: var(--ion-border-radius) !important;
+  box-shadow: var(--ion-box-shadow) !important;
+  border: 2px solid rgba(0, 255, 255, 0.2) !important;
+  backdrop-filter: blur(20px) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+ion-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s;
+}
+
+ion-card:hover::before {
+  left: 100%;
+}
+
+/* Cyberpunk button styles */
+ion-button {
+  --border-radius: 25px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  overflow: hidden;
+  
+  &.button-fill-solid {
+    --background: linear-gradient(45deg, var(--neon-blue), var(--electric-blue));
+    --color: #000000;
+    box-shadow: var(--neon-glow-cyan);
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--neon-glow-blue);
+  }
+}
+
+/* Neon toolbar styles */
+ion-toolbar {
+  --background: var(--ion-toolbar-background);
+  border-bottom: 2px solid rgba(0, 255, 255, 0.3) !important;
+  backdrop-filter: blur(20px) !important;
+  position: relative;
+}
+
+ion-toolbar::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--neon-blue), var(--neon-purple), transparent);
+  animation: neonFlow 3s ease-in-out infinite;
+}
+
+/* Futuristic FAB button */
+ion-fab-button {
+  --border-radius: 50%;
+  --background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  --color: #000000;
+  --box-shadow: var(--neon-glow-cyan);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: conic-gradient(transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: rotate 2s linear infinite;
+    z-index: -1;
+  }
+  
+  &:hover {
+    --box-shadow: var(--neon-glow-purple);
+    transform: scale(1.1);
+  }
+}
+
+/* Futuristic input and item styles */
+ion-item {
+  --background: var(--ion-item-background);
+  --border-color: rgba(0, 255, 255, 0.2);
+  border-radius: var(--ion-border-radius) !important;
+  margin: 8px 0 !important;
+  backdrop-filter: blur(10px);
+  
+  &:hover {
+    --background: rgba(26, 26, 46, 0.5);
+    border-color: rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.1);
+  }
+}
+
+/* Neon text glow effects */
+.neon-text {
+  text-shadow: var(--neon-glow-cyan);
+  animation: textGlow 2s ease-in-out infinite alternate;
+}
+
+.neon-text-purple {
+  text-shadow: var(--neon-glow-purple);
+  animation: textGlowPurple 2s ease-in-out infinite alternate;
+}
+
+.neon-text-green {
+  text-shadow: var(--neon-glow-green);
+}
+
+/* Keyframe animations */
+@keyframes neonFlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes textGlow {
+  from { text-shadow: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-blue); }
+  to { text-shadow: 0 0 10px var(--neon-blue), 0 0 20px var(--neon-blue), 0 0 30px var(--neon-blue); }
+}
+
+@keyframes textGlowPurple {
+  from { text-shadow: 0 0 5px var(--neon-purple), 0 0 10px var(--neon-purple); }
+  to { text-shadow: 0 0 10px var(--neon-purple), 0 0 20px var(--neon-purple), 0 0 30px var(--neon-purple); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Holographic effects */
+.holographic {
+  background: linear-gradient(45deg, 
+    rgba(255, 0, 255, 0.1) 0%,
+    rgba(0, 255, 255, 0.1) 25%,
+    rgba(57, 255, 20, 0.1) 50%,
+    rgba(255, 149, 0, 0.1) 75%,
+    rgba(255, 0, 255, 0.1) 100%
+  );
+  background-size: 400% 400%;
+  animation: holographicShift 4s ease infinite;
+}
+
+@keyframes holographicShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}

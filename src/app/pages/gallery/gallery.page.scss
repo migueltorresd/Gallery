@@ -1,0 +1,361 @@
+// Estilo futurista para el estado vacío
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 300px;
+    border: 2px solid rgba(0, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite;
+  }
+  
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 200px;
+    height: 200px;
+    border: 1px solid rgba(255, 0, 255, 0.3);
+    border-radius: 50%;
+    animation: pulse 2s ease-in-out infinite reverse;
+  }
+  
+  ion-icon {
+    color: var(--neon-blue);
+    margin-bottom: 1rem;
+    font-size: 4rem;
+    filter: drop-shadow(var(--neon-glow-cyan));
+    animation: float 3s ease-in-out infinite;
+    z-index: 2;
+    position: relative;
+  }
+  
+  h2 {
+    color: var(--neon-blue);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    text-shadow: var(--neon-glow-cyan);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 2;
+    position: relative;
+  }
+  
+  p {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 300px;
+    z-index: 2;
+    position: relative;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.1);
+    opacity: 1;
+  }
+}
+
+// Contenedor de foto con efectos cyberpunk futuristas
+.photo-container {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  box-shadow: 
+    0 0 20px rgba(0, 255, 255, 0.2),
+    inset 0 0 20px rgba(255, 0, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(26, 26, 46, 0.4);
+  backdrop-filter: blur(10px);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple), var(--neon-green), var(--neon-blue));
+    background-size: 400% 400%;
+    border-radius: 22px;
+    z-index: -1;
+    opacity: 0;
+    animation: gradientShift 3s ease infinite;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(0, 255, 255, 0.8);
+    box-shadow: 
+      0 0 30px rgba(0, 255, 255, 0.4),
+      0 10px 40px rgba(255, 0, 255, 0.2),
+      inset 0 0 30px rgba(255, 0, 255, 0.2);
+      
+    &::before {
+      opacity: 0.7;
+    }
+  }
+  
+  ion-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 1;
+    
+    &:hover {
+      transform: scale(1.08);
+      filter: brightness(1.2) contrast(1.1) saturate(1.2);
+    }
+  }
+  
+  // Efecto de escaneo futurista
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  &:hover::after {
+    left: 100%;
+  }
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+// Overlay cyberpunk que aparece sobre las fotos
+.photo-overlay {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid rgba(0, 255, 255, 0.5);
+  border-radius: 50%;
+  backdrop-filter: blur(15px);
+  transition: all 0.3s ease;
+  z-index: 3;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: conic-gradient(var(--neon-blue), var(--neon-purple), var(--neon-blue));
+    border-radius: 50%;
+    z-index: -1;
+    animation: rotate 3s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    
+    &::before {
+      opacity: 1;
+    }
+  }
+  
+  ion-button {
+    --color: var(--neon-blue);
+    --padding-start: 8px;
+    --padding-end: 8px;
+    width: 40px;
+    height: 40px;
+    --background: transparent;
+    
+    ion-icon {
+      filter: drop-shadow(0 0 5px currentColor);
+    }
+  }
+}
+
+// Grid futurista con efectos
+ion-grid {
+  padding: 1.5rem;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+      linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 20px 20px;
+    pointer-events: none;
+    animation: gridPulse 4s ease-in-out infinite;
+  }
+  
+  ion-row {
+    justify-content: center;
+    gap: 1rem;
+  }
+}
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+// Botón flotante cyberpunk
+ion-fab-button {
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: conic-gradient(transparent 270deg, rgba(255, 255, 255, 0.4) 360deg);
+    animation: rotate 2s linear infinite;
+    z-index: -1;
+  }
+  
+  &:hover {
+    animation: float 0.6s ease-in-out;
+  }
+}
+
+// Animaciones futuristas para la aparición de elementos
+@keyframes neonFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.8);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0px);
+  }
+}
+
+@keyframes slideInFromVoid {
+  from {
+    opacity: 0;
+    transform: translateX(-100px) rotateY(90deg);
+    filter: brightness(0) hue-rotate(180deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) rotateY(0deg);
+    filter: brightness(1) hue-rotate(0deg);
+  }
+}
+
+ion-col {
+  animation: slideInFromVoid 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  
+  &:nth-child(odd) {
+    animation-delay: 0.1s;
+  }
+  
+  &:nth-child(even) {
+    animation-delay: 0.3s;
+  }
+}
+
+// Responsive design cyberpunk
+@media (min-width: 768px) {
+  .photo-container ion-img {
+    height: 220px;
+  }
+  
+  ion-grid {
+    padding: 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .photo-container ion-img {
+    height: 280px;
+  }
+  
+  ion-grid {
+    padding: 3rem;
+  }
+}
+
+// Efectos especiales para hover en toda la página
+ion-content {
+  --background: transparent;
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: 
+      radial-gradient(circle at 20% 20%, rgba(0, 255, 255, 0.1) 0%, transparent 25%),
+      radial-gradient(circle at 80% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 25%),
+      radial-gradient(circle at 40% 60%, rgba(57, 255, 20, 0.05) 0%, transparent 25%);
+    pointer-events: none;
+    z-index: -1;
+    animation: ambientGlow 8s ease-in-out infinite;
+  }
+}
+
+@keyframes ambientGlow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  33% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+  66% {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+}

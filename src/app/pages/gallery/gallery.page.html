@@ -1,0 +1,46 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class="neon-text">
+      <ion-icon name="camera-outline" slot="start" class="neon-text"></ion-icon>
+      GALERÍA CYBER
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Mensaje cuando no hay fotos -->
+  <div *ngIf="photoService.photos.length === 0" class="empty-state holographic">
+    <ion-icon name="camera-outline" size="large"></ion-icon>
+    <h2 class="neon-text">SISTEMA VACÍO</h2>
+    <p>Inicializa el módulo de captura para agregar datos visuales al sistema</p>
+  </div>
+
+  <!-- Grid de fotos -->
+  <ion-grid *ngIf="photoService.photos.length > 0">
+    <ion-row>
+      <ion-col size="6" size-md="4" size-lg="3" *ngFor="let photo of photoService.photos; index as position">
+        <div class="photo-container">
+          <ion-img 
+            [src]="photo.webviewPath" 
+            (click)="showActionSheet(photo, position)">
+          </ion-img>
+          <div class="photo-overlay">
+            <ion-button 
+              fill="clear" 
+              size="small" 
+              (click)="showActionSheet(photo, position)">
+              <ion-icon name="ellipsis-vertical" slot="icon-only"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Botón flotante cyberpunk para agregar fotos -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="addNewPhoto()">
+      <ion-icon name="add" class="neon-text-purple"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
