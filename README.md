@@ -77,8 +77,8 @@ npm --version     # v9+
 ### Instalación Rápida
 ```bash
 # 1. Clonar proyecto
-git clone <repo-url>
-cd miAppTienda
+git clone https://github.com/migueltorresd/Gallery.git
+cd Gallery
 
 # 2. Instalar dependencias
 npm install
