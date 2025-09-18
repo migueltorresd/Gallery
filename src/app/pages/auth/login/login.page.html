@@ -1,0 +1,121 @@
+<ion-content [fullscreen]="true">
+  <!-- Fondo con efectos cyberpunk -->
+  <div class="login-background"></div>
+  
+  <div class="login-container">
+    <!-- Logo y título -->
+    <div class="login-header">
+      <ion-icon name="shield-checkmark" class="login-logo"></ion-icon>
+      <h1 class="neon-text">CYBER LOGIN</h1>
+      <p class="login-subtitle">Acceso al sistema de galería</p>
+    </div>
+
+    <!-- Formulario de login -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      
+      <!-- Campo Usuario -->
+      <div class="form-group">
+        <ion-item class="cyber-input" [class.error]="hasFieldError('username')">
+          <ion-icon name="person" slot="start" class="input-icon"></ion-icon>
+          <ion-input
+            formControlName="username"
+            placeholder="Usuario o email"
+            type="text"
+            autocomplete="username"
+            [class.invalid]="hasFieldError('username')"
+            clearInput="true">
+          </ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="hasFieldError('username')">
+          {{ getFieldError('username') }}
+        </div>
+      </div>
+
+      <!-- Campo Contraseña -->
+      <div class="form-group">
+        <ion-item class="cyber-input" [class.error]="hasFieldError('password')">
+          <ion-icon name="lock-closed" slot="start" class="input-icon"></ion-icon>
+          <ion-input
+            formControlName="password"
+            [placeholder]="'Contraseña'"
+            [type]="showPassword ? 'text' : 'password'"
+            autocomplete="current-password"
+            [class.invalid]="hasFieldError('password')">
+          </ion-input>
+          <ion-button 
+            slot="end" 
+            fill="clear" 
+            (click)="togglePasswordVisibility()"
+            class="password-toggle">
+            <ion-icon 
+              [name]="showPassword ? 'eye-off' : 'eye'"
+              class="toggle-icon">
+            </ion-icon>
+          </ion-button>
+        </ion-item>
+        <div class="error-message" *ngIf="hasFieldError('password')">
+          {{ getFieldError('password') }}
+        </div>
+      </div>
+
+      <!-- Botón de Login -->
+      <ion-button 
+        type="submit"
+        expand="block"
+        class="cyber-button login-button"
+        [disabled]="isLoading || loginForm.invalid">
+        <ion-icon name="log-in" slot="start" *ngIf="!isLoading"></ion-icon>
+        <ion-spinner name="crescent" *ngIf="isLoading"></ion-spinner>
+        {{ isLoading ? 'INICIANDO SESIÓN...' : 'INICIAR SESIÓN' }}
+      </ion-button>
+
+    </form>
+
+    <!-- Credenciales demo -->
+    <div class="demo-credentials">
+      <p class="demo-title">Credenciales Demo:</p>
+      <div class="demo-buttons">
+        <ion-button 
+          fill="outline" 
+          size="small" 
+          class="demo-button admin-demo"
+          (click)="fillDemoCredentials('admin')">
+          <ion-icon name="person-circle" slot="start"></ion-icon>
+          Admin Demo
+        </ion-button>
+        
+        <ion-button 
+          fill="outline" 
+          size="small" 
+          class="demo-button user-demo"
+          (click)="fillDemoCredentials('demo')">
+          <ion-icon name="person" slot="start"></ion-icon>
+          User Demo
+        </ion-button>
+      </div>
+      
+      <div class="demo-info">
+        <div class="demo-item">
+          <strong>Admin:</strong> admin / admin123
+        </div>
+        <div class="demo-item">
+          <strong>Demo:</strong> demo / demo123
+        </div>
+      </div>
+    </div>
+
+    <!-- Enlace a registro -->
+    <div class="login-footer">
+      <p class="register-link">
+        ¿No tienes cuenta?
+        <ion-button 
+          fill="clear" 
+          (click)="navigateToRegister()"
+          class="link-button">
+          Registrarse
+        </ion-button>
+      </p>
+    </div>
+
+  </div>
+</ion-content>

@@ -1,0 +1,170 @@
+<ion-content [fullscreen]="true">
+  <!-- Fondo con efectos cyberpunk -->
+  <div class="register-background"></div>
+  
+  <div class="register-container">
+    <!-- Botón de retorno -->
+    <ion-button 
+      fill="clear" 
+      class="back-button"
+      (click)="navigateToLogin()">
+      <ion-icon name="arrow-back" slot="icon-only"></ion-icon>
+    </ion-button>
+
+    <!-- Logo y título -->
+    <div class="register-header">
+      <ion-icon name="person-add" class="register-logo"></ion-icon>
+      <h1 class="neon-text">NUEVO USUARIO</h1>
+      <p class="register-subtitle">Crea tu cuenta en la galería cyber</p>
+    </div>
+
+    <!-- Formulario de registro -->
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="register-form">
+      
+      <!-- Campo Usuario -->
+      <div class="form-group">
+        <ion-item class="cyber-input" [class.error]="hasFieldError('username')">
+          <ion-icon name="at" slot="start" class="input-icon"></ion-icon>
+          <ion-input
+            formControlName="username"
+            placeholder="Nombre de usuario"
+            type="text"
+            autocomplete="username"
+            [class.invalid]="hasFieldError('username')"
+            clearInput="true">
+          </ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="hasFieldError('username')">
+          {{ getFieldError('username') }}
+        </div>
+      </div>
+
+      <!-- Campo Email -->
+      <div class="form-group">
+        <ion-item class="cyber-input" [class.error]="hasFieldError('email')">
+          <ion-icon name="mail" slot="start" class="input-icon"></ion-icon>
+          <ion-input
+            formControlName="email"
+            placeholder="Correo electrónico"
+            type="email"
+            autocomplete="email"
+            [class.invalid]="hasFieldError('email')"
+            clearInput="true">
+          </ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="hasFieldError('email')">
+          {{ getFieldError('email') }}
+        </div>
+      </div>
+
+      <!-- Campo Nombre Completo -->
+      <div class="form-group">
+        <ion-item class="cyber-input" [class.error]="hasFieldError('fullName')">
+          <ion-icon name="person" slot="start" class="input-icon"></ion-icon>
+          <ion-input
+            formControlName="fullName"
+            placeholder="Nombre completo"
+            type="text"
+            autocomplete="name"
+            [class.invalid]="hasFieldError('fullName')"
+            clearInput="true">
+          </ion-input>
+        </ion-item>
+        <div class="error-message" *ngIf="hasFieldError('fullName')">
+          {{ getFieldError('fullName') }}
+        </div>
+      </div>
+
+      <!-- Campo Contraseña -->
+      <div class="form-group">
+        <ion-item class="cyber-input" [class.error]="hasFieldError('password')">
+          <ion-icon name="lock-closed" slot="start" class="input-icon"></ion-icon>
+          <ion-input
+            formControlName="password"
+            placeholder="Contraseña"
+            [type]="showPassword ? 'text' : 'password'"
+            autocomplete="new-password"
+            [class.invalid]="hasFieldError('password')">
+          </ion-input>
+          <ion-button 
+            slot="end" 
+            fill="clear" 
+            (click)="togglePasswordVisibility('password')"
+            class="password-toggle">
+            <ion-icon 
+              [name]="showPassword ? 'eye-off' : 'eye'"
+              class="toggle-icon">
+            </ion-icon>
+          </ion-button>
+        </ion-item>
+        <div class="error-message" *ngIf="hasFieldError('password')">
+          {{ getFieldError('password') }}
+        </div>
+      </div>
+
+      <!-- Campo Confirmar Contraseña -->
+      <div class="form-group">
+        <ion-item class="cyber-input" [class.error]="hasFieldError('confirmPassword')">
+          <ion-icon name="checkmark-circle" slot="start" class="input-icon"></ion-icon>
+          <ion-input
+            formControlName="confirmPassword"
+            placeholder="Confirmar contraseña"
+            [type]="showConfirmPassword ? 'text' : 'password'"
+            autocomplete="new-password"
+            [class.invalid]="hasFieldError('confirmPassword')">
+          </ion-input>
+          <ion-button 
+            slot="end" 
+            fill="clear" 
+            (click)="togglePasswordVisibility('confirmPassword')"
+            class="password-toggle">
+            <ion-icon 
+              [name]="showConfirmPassword ? 'eye-off' : 'eye'"
+              class="toggle-icon">
+            </ion-icon>
+          </ion-button>
+        </ion-item>
+        <div class="error-message" *ngIf="hasFieldError('confirmPassword')">
+          {{ getFieldError('confirmPassword') }}
+        </div>
+      </div>
+
+      <!-- Botón de Registro -->
+      <ion-button 
+        type="submit"
+        expand="block"
+        class="cyber-button register-button"
+        [disabled]="isLoading || registerForm.invalid">
+        <ion-icon name="person-add" slot="start" *ngIf="!isLoading"></ion-icon>
+        <ion-spinner name="crescent" *ngIf="isLoading"></ion-spinner>
+        {{ isLoading ? 'CREANDO CUENTA...' : 'CREAR CUENTA' }}
+      </ion-button>
+
+    </form>
+
+    <!-- Info de validación -->
+    <div class="validation-info">
+      <p class="info-title">Requisitos de contraseña:</p>
+      <ul class="requirements-list">
+        <li class="requirement-item">Mínimo 6 caracteres</li>
+        <li class="requirement-item">Al menos una mayúscula</li>
+        <li class="requirement-item">Al menos una minúscula</li>
+        <li class="requirement-item">Al menos un número</li>
+      </ul>
+    </div>
+
+    <!-- Enlace a login -->
+    <div class="register-footer">
+      <p class="login-link">
+        ¿Ya tienes cuenta?
+        <ion-button 
+          fill="clear" 
+          (click)="navigateToLogin()"
+          class="link-button">
+          Iniciar Sesión
+        </ion-button>
+      </p>
+    </div>
+
+  </div>
+</ion-content>

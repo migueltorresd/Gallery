@@ -1,0 +1,352 @@
+// Estilos para la página de Registro con tema Cyberpunk
+// Extiende los estilos del login con elementos específicos del registro
+
+ion-content {
+  --background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+  position: relative;
+}
+
+// Fondo animado cyberpunk
+.register-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 30% 90%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 70% 10%, rgba(120, 219, 255, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(120, 255, 119, 0.2) 0%, transparent 50%);
+  animation: backgroundPulse 5s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes backgroundPulse {
+  0% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+// Contenedor principal
+.register-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 1rem 1.5rem 2rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+// Botón de retorno
+.back-button {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  --color: var(--cyber-neon-blue);
+  --padding-start: 8px;
+  --padding-end: 8px;
+  z-index: 10;
+  
+  &:hover {
+    --color: #00bfff;
+    transform: scale(1.1);
+  }
+  
+  ion-icon {
+    font-size: 1.5rem;
+  }
+}
+
+// Encabezado del registro
+.register-header {
+  text-align: center;
+  margin: 3rem 0 2rem 0;
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.register-logo {
+  font-size: 3.5rem;
+  color: var(--cyber-neon-pink);
+  filter: drop-shadow(0 0 20px var(--cyber-neon-pink));
+  margin-bottom: 1rem;
+  animation: logoPulse 2s ease-in-out infinite alternate;
+}
+
+@keyframes logoPulse {
+  0% {
+    filter: drop-shadow(0 0 20px var(--cyber-neon-pink));
+  }
+  100% {
+    filter: drop-shadow(0 0 30px var(--cyber-neon-pink));
+  }
+}
+
+.register-header h1 {
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+
+.register-subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0 0;
+  letter-spacing: 0.05rem;
+}
+
+// Formulario
+.register-form {
+  width: 100%;
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+}
+
+// Inputs cyberpunk (reutiliza estilos del login)
+.cyber-input {
+  --background: rgba(26, 26, 46, 0.8);
+  --border-radius: 12px;
+  --border-color: rgba(0, 255, 255, 0.3);
+  --color: #ffffff;
+  --placeholder-color: rgba(255, 255, 255, 0.6);
+  --inner-border-width: 0;
+  --highlight-color-focused: var(--cyber-neon-blue);
+  
+  border: 2px solid rgba(0, 255, 255, 0.3);
+  border-radius: 12px;
+  margin: 0;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  
+  &:hover {
+    border-color: rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+  }
+  
+  &.item-has-focus {
+    border-color: var(--cyber-neon-blue);
+    box-shadow: 0 0 20px rgba(0, 191, 255, 0.3);
+  }
+  
+  &.error {
+    border-color: #ff6b6b;
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.3);
+  }
+}
+
+.input-icon {
+  color: var(--cyber-neon-blue);
+  margin-right: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.password-toggle {
+  --color: rgba(255, 255, 255, 0.6);
+  --padding-start: 0;
+  --padding-end: 8px;
+  
+  &:hover {
+    --color: var(--cyber-neon-blue);
+  }
+}
+
+.toggle-icon {
+  font-size: 1.2rem;
+}
+
+// Mensajes de error
+.error-message {
+  color: #ff6b6b;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+  display: flex;
+  align-items: center;
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+// Botón de registro
+.register-button {
+  --background: linear-gradient(45deg, var(--cyber-neon-pink), var(--cyber-neon-blue));
+  --background-hover: linear-gradient(45deg, #ff44aa, #0099ff);
+  --background-focused: linear-gradient(45deg, #ff44aa, #0099ff);
+  --color: #000000;
+  --border-radius: 25px;
+  --box-shadow: 0 8px 25px rgba(255, 119, 198, 0.3);
+  
+  height: 50px;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-top: 1rem;
+  
+  transition: all 0.3s ease;
+  
+  &:hover:not([disabled]) {
+    transform: translateY(-2px);
+    --box-shadow: 0 12px 30px rgba(255, 119, 198, 0.4);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+  
+  &[disabled] {
+    --background: rgba(255, 255, 255, 0.2);
+    --color: rgba(255, 255, 255, 0.5);
+    --box-shadow: none;
+  }
+}
+
+// Información de validación
+.validation-info {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  width: 100%;
+  animation: fadeIn 0.8s ease-out 0.4s both;
+}
+
+.info-title {
+  color: var(--cyber-neon-green);
+  font-weight: bold;
+  margin: 0 0 0.75rem 0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05rem;
+}
+
+.requirements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.requirement-item {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+  position: relative;
+  padding-left: 1rem;
+  
+  &:before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--cyber-neon-blue);
+    font-weight: bold;
+  }
+}
+
+// Footer con enlace a login
+.register-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  animation: fadeIn 0.8s ease-out 0.6s both;
+}
+
+.login-link {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.link-button {
+  --color: var(--cyber-neon-pink);
+  --padding-start: 8px;
+  --padding-end: 8px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  
+  &:hover {
+    --color: #ff44aa;
+    text-shadow: 0 0 10px var(--cyber-neon-pink);
+  }
+}
+
+// Animaciones de entrada
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Responsive design
+@media (max-width: 480px) {
+  .register-container {
+    padding: 1rem;
+  }
+  
+  .register-header {
+    margin: 2.5rem 0 1.5rem 0;
+  }
+  
+  .register-header h1 {
+    font-size: 1.8rem;
+  }
+  
+  .register-logo {
+    font-size: 3rem;
+  }
+  
+  .form-group {
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .register-container {
+    max-width: 450px;
+  }
+}

@@ -1,11 +1,25 @@
-# 📱 Galería Cyber - Aplicación Ionic
+# 📱 Galería Cyber - App Híbrida Ionic/Angular
 
-[![Ionic](https://img.shields.io/badge/Ionic-8.x-3880FF?style=flat-square&logo=ionic)](https://ionicframework.com/)
-[![Angular](https://img.shields.io/badge/Angular-18.x-DD0031?style=flat-square&logo=angular)](https://angular.io/)
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-007acc?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
-[![Capacitor](https://img.shields.io/badge/Capacitor-6.x-119eff?style=flat-square&logo=capacitor)](https://capacitorjs.com/)
+<p align="center">
+  <img src="https://img.shields.io/badge/Ionic-8.0.0-blue?style=for-the-badge&logo=ionic" alt="Ionic">
+  <img src="https://img.shields.io/badge/Angular-20.0.0-red?style=for-the-badge&logo=angular" alt="Angular">
+  <img src="https://img.shields.io/badge/TypeScript-5.8.0-blue?style=for-the-badge&logo=typescript" alt="TypeScript">
+  <img src="https://img.shields.io/badge/Capacitor-7.4.3-black?style=for-the-badge&logo=capacitor" alt="Capacitor">
+</p>
 
-Aplicación híbrida de galería de fotos con diseño cyberpunk futurista. Captura, almacena y gestiona fotos en web, iOS y Android.
+## 📖 Descripción
+
+**Galería Cyber** es una aplicación híbrida moderna desarrollada con Ionic 8 y Angular 20 que permite a los usuarios capturar, almacenar y gestionar fotografías con un diseño futurista cyberpunk. La aplicación incluye un sistema de autenticación completo con JWT simulado, almacenamiento separado por usuario y una interfaz visual impactante con efectos neón y animaciones holográficas.
+
+### 🎯 Características Principales
+
+- **🔐 Autenticación JWT completa** con login/registro y manejo de sesiones
+- **📸 Captura de fotos** usando la cámara del dispositivo
+- **👤 Galerías privadas** - cada usuario tiene su propia colección de fotos
+- **🎨 Diseño cyberpunk** con efectos neón, holográficos y animaciones
+- **📱 Responsive design** optimizado para móviles y escritorio
+- **🔄 Persistencia de datos** con Ionic Storage
+- **🚀 Multiplataforma** - web, iOS y Android
 
 ## ⚡ Ejecución Rápida
 
@@ -19,51 +33,87 @@ npm install
 ionic serve
 ```
 
-## 🎨 Características
+### Credenciales Demo
 
-- 📷 **Captura de fotos** con cámara del dispositivo
-- 🖼️ **Galería responsiva** con grid adaptativo
-- 💾 **Almacenamiento local** persistente
-- 🗑️ **Eliminación de fotos** con confirmación
-- 🌌 **Multiplataforma**: Web, iOS, Android
-- 🔮 **Tema cyberpunk** con efectos neón
+| Usuario | Contraseña | Descripción |
+|---------|------------|-------------|
+| `admin` | `admin123` | Administrador del sistema |
+| `demo`  | `demo123`  | Usuario demostración |
 
-## 🏗️ Arquitectura del Proyecto
+## 🏢️ Arquitectura Técnica
+
+### Stack Tecnológico
+
+| Tecnología | Versión | Propósito |
+|------------|---------|-----------||
+| **Ionic Framework** | 8.0.0 | Framework de UI híbrida |
+| **Angular** | 20.0.0 | Framework de desarrollo frontend |
+| **TypeScript** | 5.8.0 | Lenguaje de programación tipado |
+| **Capacitor** | 7.4.3 | Runtime nativo multiplataforma |
+| **SCSS** | - | Preprocesador CSS para estilos |
+| **RxJS** | 7.8.0 | Programación reactiva |
+
+### Plugins de Capacitor
+
+- **@capacitor/camera** - Acceso a la cámara del dispositivo
+- **@capacitor/filesystem** - Gestión de archivos locales
+- **@capacitor/preferences** - Almacenamiento de preferencias
+- **@ionic/storage-angular** - Base de datos local
+
+## 📁 Estructura del Proyecto
 
 ```
-src/app/
-├── models/
-│   └── photo.interface.ts       # Interfaz de datos de fotos
-├── pages/gallery/               # Página principal de galería
-│   ├── gallery.page.ts          # Lógica del componente
-│   ├── gallery.page.html        # Template HTML
-│   └── gallery.page.scss        # Estilos cyberpunk
-├── services/
-│   └── photo.service.ts         # Servicio principal de fotos
-├── app.component.ts             # Componente raíz
-├── app.module.ts                # Módulo principal
-└── app-routing.module.ts        # Configuración de rutas
+src/
+├── app/
+│   ├── models/                     # Interfaces y tipos de datos
+│   │   ├── auth.interface.ts       # Tipos para autenticación
+│   │   └── photo.interface.ts      # Tipos para fotos
+│   ├── services/                   # Servicios de la aplicación
+│   │   ├── auth.service.ts         # Gestión de autenticación
+│   │   └── photo.service.ts        # Gestión de fotos
+│   ├── pages/                      # Páginas de la aplicación
+│   │   ├── auth/
+│   │   │   ├── login/              # Página de inicio de sesión
+│   │   │   └── register/           # Página de registro
+│   │   └── gallery/                # Galería principal de fotos
+│   ├── app-routing.module.ts       # Configuración de rutas
+│   ├── app.component.ts            # Componente raíz
+│   └── app.module.ts               # Módulo principal
+├── global.scss                     # Estilos globales cyberpunk
+├── theme/
+│   └── variables.scss              # Variables de tema
+└── index.html                      # Archivo HTML principal
 ```
 
-### Componentes Principales
+## 🚀 Instalación y Configuración
 
-- **GalleryPage**: Página principal con grid de fotos y botón FAB
-- **PhotoService**: Maneja captura, almacenamiento y eliminación de fotos
-- **Photo Interface**: Define la estructura de datos de las fotos
+### Prerrequisitos
 
-## 🔌 Plugins de Capacitor Utilizados
+- **Node.js** (v18 o superior)
+- **npm** o **yarn**
+- **Ionic CLI** (`npm install -g @ionic/cli`)
+- **Angular CLI** (`npm install -g @angular/cli`)
 
-| Plugin | Versión | Propósito |
-|--------|---------|----------|
-| `@capacitor/camera` | 6.x | **Captura de fotos**: Acceso a la cámara del dispositivo y galería |
-| `@capacitor/filesystem` | 6.x | **Almacenamiento**: Guardar/leer archivos de imagen en el dispositivo |
-| `@ionic/storage-angular` | 4.x | **Persistencia**: Almacenar metadatos de fotos (rutas, nombres) |
+### Instalación Local
 
-### 🔍 Por qué se eligieron estos plugins:
+1. **Clonar el repositorio**
+   ```bash
+   git clone <repository-url>
+   cd miAppTienda
+   ```
 
-- **Camera**: Única forma de acceder a la cámara nativa desde una app híbrida
-- **Filesystem**: Necesario para guardar imágenes físicamente en el dispositivo
-- **Storage**: Para recordar qué fotos tiene la app entre sesiones
+2. **Instalar dependencias**
+   ```bash
+   npm install
+   ```
+
+3. **Ejecutar en desarrollo**
+   ```bash
+   ionic serve
+   ```
+
+4. **Acceder a la aplicación**
+   - Abrir navegador en `http://localhost:8100`
 
 ## 🛠️ Instalación Local
 
@@ -116,15 +166,113 @@ ionic cap sync ios
 ionic cap open ios
 ```
 
-## 🔧 Scripts Disponibles
+## 🎨 Sistema de Diseño
+
+### Paleta de Colores Cyberpunk
+
+```scss
+:root {
+  --cyber-neon-green: #39ff14;   // Verde neón principal
+  --cyber-neon-blue: #00ffff;    // Azul cian brillante
+  --cyber-neon-pink: #ff00ff;    // Rosa/magenta neón
+  --cyber-neon-purple: #9d00ff;  // Púrpura eléctrico
+  --background-dark: #0a0a0f;    // Fondo oscuro principal
+}
+```
+
+### Efectos Visuales
+
+- **Glow Effects**: Sombras neón en textos e iconos
+- **Holographic Backgrounds**: Gradientes animados multi-color
+- **Grid Pattern**: Patrones de cuadrícula futuristas
+- **Animated Transitions**: Transiciones suaves entre estados
+
+## 🔐 Sistema de Autenticación
+
+### Flujo de Autenticación
+
+1. **Login/Register** → Usuario ingresa credenciales
+2. **JWT Generation** → Sistema genera token simulado
+3. **Storage** → Token se almacena localmente
+4. **State Management** → Estado reactivo con RxJS
+5. **Route Protection** → Redirección según autenticación
+
+### Seguridad
+
+- **JWT Tokens**: Simulación de tokens JWT con payload
+- **Session Management**: Gestión automática de sesiones
+- **Auto-logout**: Limpieza automática al cerrar sesión
+- **Private Galleries**: Aislamiento total entre usuarios
+
+## 📸 Sistema de Fotos
+
+### Funcionalidades
+
+- **Captura**: Acceso directo a cámara del dispositivo
+- **Almacenamiento**: Guardado local con nombres únicos por usuario
+- **Visualización**: Grid responsivo con efectos cyberpunk
+- **Eliminación**: Borrado de archivo físico y metadata
+- **Persistencia**: Mantiene fotos entre sesiones
+
+### Almacenamiento por Usuario
+
+```typescript
+// Estructura de almacenamiento
+Storage Keys: "photos_user_1", "photos_user_2", etc.
+File Names: "user_1_1234567890.jpeg", "user_2_1234567891.jpeg"
+```
+
+## 🧪 Testing y Desarrollo
+
+### Comandos Útiles
 
 ```bash
-ionic serve        # Desarrollo web (localhost:8100)
-ionic build        # Construir para producción
-ionic cap sync     # Sincronizar plugins con móviles
-ionic generate     # Crear nuevos componentes/páginas
+# Desarrollo local
+ionic serve
+
+# Construcción para producción
+ionic build --prod
+
+# Linting de código
+ng lint
+
+# Ejecutar tests
+ng test
+
+# Sincronizar con dispositivos
+ionic capacitor sync
 ```
+
+## 🐛 Solución de Problemas
+
+### Problemas Comunes
+
+1. **Cámara no funciona en navegador**
+   - Usar HTTPS o localhost
+   - Verificar permisos del navegador
+
+2. **Fotos no se guardan**
+   - Verificar permisos de escritura
+   - Comprobar espacio de almacenamiento
+
+3. **Estilos no se aplican**
+   - Limpiar cache: `ionic serve --lab`
+   - Verificar imports de SCSS
+
+### Logs y Debugging
+
+Los servicios incluyen logging detallado. Abrir DevTools → Console para ver:
+- Estados de autenticación
+- Operaciones de archivo
+- Errores y warnings
 
 ## 📝 Licencia
 
-MIT License - Ver `LICENSE` para más detalles.
+Proyecto educativo desarrollado para aprendizaje de tecnologías híbridas.
+
+---
+
+<p align="center">
+  <strong>🚀 Desarrollado con Ionic 8 + Angular 20 🚀</strong><br>
+  <em>Una experiencia cyberpunk en el mundo de las aplicaciones híbridas</em>
+</p>

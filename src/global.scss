@@ -312,3 +312,56 @@ ion-item {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+
+/* Estilos para alertas de logout */
+.alert-wrapper {
+  --background: rgba(26, 26, 46, 0.95) !important;
+  --backdrop-filter: blur(15px);
+  border: 2px solid rgba(0, 255, 255, 0.3) !important;
+  border-radius: 15px !important;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.2) !important;
+}
+
+.alert-head {
+  color: var(--cyber-neon-blue) !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1rem !important;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5) !important;
+}
+
+.alert-message {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 1rem !important;
+}
+
+.alert-button-cancel {
+  --color: rgba(255, 255, 255, 0.7) !important;
+  --background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  border-radius: 8px !important;
+}
+
+.alert-button-confirm {
+  --color: #000000 !important;
+  --background: linear-gradient(45deg, #ff6b6b, #ff4757) !important;
+  border: none !important;
+  border-radius: 8px !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 0 15px rgba(255, 107, 107, 0.4) !important;
+  
+  &:hover {
+    --background: linear-gradient(45deg, #ff5252, #ff3838) !important;
+    transform: translateY(-1px) !important;
+  }
+}
+
+/* Estilos adicionales para variables cyberpunk faltantes */
+:root {
+  --cyber-neon-green: #39ff14;
+  --cyber-neon-blue: #00ffff;
+  --cyber-neon-pink: #ff00ff;
+  --cyber-neon-purple: #9d00ff;
+}
