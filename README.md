@@ -13,13 +13,17 @@
 
 ### 🎯 Características Principales
 
-- **🔐 Autenticación JWT completa** con login/registro y manejo de sesiones
-- **📸 Captura de fotos** usando la cámara del dispositivo
-- **👤 Galerías privadas** - cada usuario tiene su propia colección de fotos
+- **🔐 Sistema de autenticación completo** con login/registro y manejo de sesiones JWT
+- **📸 Captura de fotos** usando la cámara del dispositivo con alta calidad
+- **👤 Galerías privadas** - cada usuario tiene su propia colección aislada de fotos
+- **🗑️ Eliminación inteligente** con confirmación y feedback visual
+- **🛡️ Manejo robusto de errores** con validaciones y recuperación automática
+- **👨‍👩‍👧‍👦 Multi-usuario** - soporte completo para múltiples cuentas
 - **🎨 Diseño cyberpunk** con efectos neón, holográficos y animaciones
-- **📱 Responsive design** optimizado para móviles y escritorio
-- **🔄 Persistencia de datos** con Ionic Storage
-- **🚀 Multiplataforma** - web, iOS y Android
+- **📱 Responsive design** optimizado para móviles, tablets y escritorio
+- **🔄 Persistencia de datos** con Ionic Storage y sistema de archivos
+- **🚀 Multiplataforma** - web, iOS y Android con Capacitor
+- **🔒 Protección de rutas** - navegación segura según estado de autenticación
 
 ## ⚡ Ejecución Rápida
 
@@ -35,10 +39,13 @@ ionic serve
 
 ### Credenciales Demo
 
-| Usuario | Contraseña | Descripción |
-|---------|------------|-------------|
-| `admin` | `admin123` | Administrador del sistema |
-| `demo`  | `demo123`  | Usuario demostración |
+| Usuario | Email | Contraseña | Descripción |
+|---------|-------|------------|-------------|
+| `admin` | admin@cyber.com | `admin123` | Administrador del sistema |
+| `demo`  | demo@cyber.com | `demo123`  | Usuario demostración |
+| `test`  | test@cyber.com | `test123`  | Usuario de pruebas |
+
+> **Nota**: Puedes crear nuevos usuarios usando el formulario de registro
 
 ## 🏢️ Arquitectura Técnica
 
@@ -191,36 +198,96 @@ ionic cap open ios
 
 ### Flujo de Autenticación
 
-1. **Login/Register** → Usuario ingresa credenciales
-2. **JWT Generation** → Sistema genera token simulado
-3. **Storage** → Token se almacena localmente
-4. **State Management** → Estado reactivo con RxJS
-5. **Route Protection** → Redirección según autenticación
+1. **Registro** → Nuevo usuario crea cuenta con email y contraseña
+2. **Login** → Usuario ingresa credenciales existentes
+3. **JWT Generation** → Sistema genera token simulado con datos del usuario
+4. **Storage** → Token y datos se almacenan localmente de forma segura
+5. **State Management** → Estado reactivo con RxJS Observable
+6. **Route Protection** → Redirección automática según estado de autenticación
+7. **Session Persistence** → Mantiene sesión entre reinicios de la app
 
-### Seguridad
+### Características de Seguridad
 
-- **JWT Tokens**: Simulación de tokens JWT con payload
-- **Session Management**: Gestión automática de sesiones
-- **Auto-logout**: Limpieza automática al cerrar sesión
-- **Private Galleries**: Aislamiento total entre usuarios
+- **JWT Tokens**: Simulación realista de tokens JWT con payload completo
+- **Session Management**: Gestión automática de sesiones con estado reactivo
+- **Auto-logout**: Limpieza automática al cerrar sesión con confirmación
+- **Private Galleries**: Aislamiento total de fotos entre diferentes usuarios
+- **Route Guards**: Protección automática de rutas privadas
+- **Data Isolation**: Cada usuario accede solo a sus propios datos
+- **Automatic Redirect**: Redirección inteligente según estado de autenticación
+
+### Usuarios de Demostración
+
+La aplicación incluye usuarios pre-configurados para testing:
+
+| Usuario | Email | Contraseña | Rol |
+|---------|-------|------------|-----|
+| `admin` | admin@cyber.com | `admin123` | Administrador |
+| `demo` | demo@cyber.com | `demo123` | Usuario estándar |
+| `test` | test@cyber.com | `test123` | Usuario de pruebas |
 
 ## 📸 Sistema de Fotos
 
-### Funcionalidades
+### Funcionalidades Principales
 
-- **Captura**: Acceso directo a cámara del dispositivo
-- **Almacenamiento**: Guardado local con nombres únicos por usuario
-- **Visualización**: Grid responsivo con efectos cyberpunk
-- **Eliminación**: Borrado de archivo físico y metadata
-- **Persistencia**: Mantiene fotos entre sesiones
+- **📷 Captura**: Acceso directo a cámara del dispositivo con calidad 100%
+- **📁 Almacenamiento**: Guardado local con nombres únicos por usuario y timestamp
+- **📱 Visualización**: Grid responsivo (2-4 columnas) con efectos cyberpunk
+- **🗑️ Eliminación inteligente**: 
+  - Confirmación antes de eliminar
+  - Validación de índices y referencias
+  - Eliminación de archivo físico y metadata
+  - Feedback visual con toasts de éxito/error
+- **🔄 Persistencia**: Mantiene fotos entre sesiones y cambios de usuario
+- **🔒 Privacidad**: Aislamiento total entre usuarios diferentes
 
-### Almacenamiento por Usuario
+### Características Avanzadas
+
+- **Manejo de errores robusto**: Recuperación automática de fotos corruptas
+- **Logging detallado**: Seguimiento completo de operaciones para debugging
+- **Validación de integridad**: Verificación de consistencia entre archivo y metadata
+- **Limpieza automática**: Eliminación de fotos inválidas al cargar la galería
+- **Cambio de usuario**: Limpieza y recarga automática al cambiar de sesión
+
+### Estructura de Almacenamiento
 
 ```typescript
-// Estructura de almacenamiento
-Storage Keys: "photos_user_1", "photos_user_2", etc.
-File Names: "user_1_1234567890.jpeg", "user_2_1234567891.jpeg"
+// Claves de almacenamiento por usuario
+Storage Keys: 
+  - "photos_user_1" → [metadata de fotos del usuario 1]
+  - "photos_user_2" → [metadata de fotos del usuario 2]
+  - "auth_token"    → token JWT del usuario actual
+
+// Archivos físicos con nombres únicos
+File Names: 
+  - "user_1_1642534567890.jpeg" → Usuario 1, timestamp
+  - "user_2_1642534567891.jpeg" → Usuario 2, timestamp
+
+// Estructura de metadata
+interface Photo {
+  filepath: string;        // Ruta del archivo físico
+  webviewPath?: string;    // URL para visualización web
+}
 ```
+
+### Flujo de Operaciones
+
+#### Captura de Foto
+1. Usuario toca botón FAB → Se abre cámara
+2. Captura foto → Conversión a base64
+3. Genera nombre único → `user_{id}_{timestamp}.jpeg`
+4. Guarda archivo físico → Directory.Data
+5. Añade metadata → Array de fotos del usuario
+6. Persiste en storage → `photos_user_{id}`
+
+#### Eliminación de Foto
+1. Usuario selecciona foto → ActionSheet con opciones
+2. Confirma eliminación → Diálogo de confirmación
+3. Valida índices → Verificación de consistencia
+4. Elimina archivo físico → Filesystem.deleteFile()
+5. Actualiza array → Splice del índice correspondiente
+6. Persiste cambios → Storage.set() con nueva lista
+7. Muestra feedback → Toast de éxito/error
 
 ## 🧪 Testing y Desarrollo
 
@@ -247,24 +314,139 @@ ionic capacitor sync
 
 ### Problemas Comunes
 
-1. **Cámara no funciona en navegador**
-   - Usar HTTPS o localhost
-   - Verificar permisos del navegador
+#### 1. **Cámara no funciona en navegador**
+```bash
+# Solución:
+- Usar HTTPS o localhost
+- Verificar permisos del navegador (Configuración → Privacidad → Cámara)
+- En Chrome: chrome://settings/content/camera
+```
 
-2. **Fotos no se guardan**
-   - Verificar permisos de escritura
-   - Comprobar espacio de almacenamiento
+#### 2. **Fotos no se guardan o eliminan**
+```bash
+# Verificar:
+- Permisos de escritura en el dispositivo
+- Espacio de almacenamiento disponible
+- Consola del navegador para errores de Filesystem
+```
 
-3. **Estilos no se aplican**
-   - Limpiar cache: `ionic serve --lab`
-   - Verificar imports de SCSS
+#### 3. **No puede eliminar fotos**
+```bash
+# Posibles causas:
+- Foto ya eliminada del sistema de archivos
+- Índice desincronizado en el array
+- Error de autenticación del usuario
 
-### Logs y Debugging
+# Solución:
+- Recargar la galería (logout/login)
+- Verificar logs en consola
+- Limpiar storage: localStorage.clear()
+```
 
-Los servicios incluyen logging detallado. Abrir DevTools → Console para ver:
-- Estados de autenticación
-- Operaciones de archivo
-- Errores y warnings
+#### 4. **Usuarios comparten fotos**
+```bash
+# Ya solucionado en v2.0+
+# Si persiste:
+- Verificar que cada usuario tiene ID único
+- Comprobar claves de storage en DevTools
+- Hacer logout/login para refrescar estado
+```
+
+#### 5. **Estilos no se aplican**
+```bash
+# Soluciones:
+ionic serve --lab          # Modo laboratorio
+ctrl + F5                   # Recarga forzada
+npm run build --prod        # Build de producción
+```
+
+#### 6. **Problemas de autenticación**
+```bash
+# Solución:
+- Limpiar storage: localStorage.clear()
+- Reiniciar servidor de desarrollo
+- Verificar credenciales en la tabla de usuarios demo
+```
+
+### Logs y Debugging Avanzado
+
+#### Abrir DevTools → Console para monitorear:
+
+**Estados de Autenticación:**
+```javascript
+// En consola del navegador:
+localStorage.getItem('auth_token')     // Token actual
+localStorage.getItem('current_user')   // Usuario actual
+```
+
+**Operaciones de Fotos:**
+```javascript
+// Ver todas las claves de storage:
+Object.keys(localStorage).filter(key => key.includes('photos_'))
+
+// Ver fotos de un usuario específico:
+localStorage.getItem('photos_user_1')
+```
+
+**Debugging del PhotoService:**
+- Logs detallados de captura: `"Archivo físico eliminado: ..."`
+- Logs de eliminación: `"Foto removida de la posición X"`
+- Errores de filesystem: `"Error eliminando archivo físico"`
+
+**Debugging del AuthService:**
+- Estados de login: `"Usuario autenticado: ..."`
+- Cambios de sesión: `"Logout exitoso"`
+- Errores de autenticación: `"Credenciales inválidas"`
+
+### Reset Completo
+
+```bash
+# Si todo falla, reset completo:
+
+# 1. Limpiar datos del navegador
+localStorage.clear();
+sessionStorage.clear();
+
+# 2. Reiniciar servidor
+Ctrl+C
+ionic serve
+
+# 3. Limpiar cache de npm
+npm start --reset-cache
+```
+
+## 📄 Changelog
+
+### v2.1.0 (Actual) - Mejoras de Eliminación
+- ✅ Corrección del bug de eliminación de fotos
+- ✅ Diálogo de confirmación antes de eliminar
+- ✅ Manejo robusto de errores con try/catch
+- ✅ Validación de índices y referencias de fotos
+- ✅ Feedback visual con toasts de éxito/error
+- ✅ Logging detallado para debugging
+
+### v2.0.0 - Sistema Multi-Usuario
+- ✅ Sistema de autenticación completo (login/registro)
+- ✅ Galerías privadas separadas por usuario
+- ✅ Protección de rutas con guards
+- ✅ Botón de logout con confirmación
+- ✅ Header con información del usuario
+- ✅ Manejo de cambios de usuario
+
+### v1.0.0 - Versión Base
+- ✅ Captura de fotos con cámara
+- ✅ Almacenamiento local de imágenes
+- ✅ Grid responsivo de fotos
+- ✅ Diseño cyberpunk con efectos neón
+- ✅ Aplicación híbrida con Ionic + Angular
+
+## 🕰️ Estado Actual
+
+✅ **Sistema estable y funcional**  
+✅ **Bug de eliminación resuelto**  
+✅ **Multi-usuario operativo**  
+✅ **Documentación actualizada**  
+🚧 **Mejoras continuas en desarrollo**  
 
 ## 📝 Licencia
 
@@ -273,6 +455,6 @@ Proyecto educativo desarrollado para aprendizaje de tecnologías híbridas.
 ---
 
 <p align="center">
-  <strong>🚀 Desarrollado con Ionic 8 + Angular 20 🚀</strong><br>
-  <em>Una experiencia cyberpunk en el mundo de las aplicaciones híbridas</em>
+  <strong>🚀 Galera Cyber v2.1.0 - Ionic 8 + Angular 20 🚀</strong><br>
+  <em>Una experiencia cyberpunk completa con autenticación y galerías privadas</em>
 </p>
