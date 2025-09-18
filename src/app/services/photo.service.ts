@@ -239,14 +239,15 @@ export class PhotoService {
    * 
    * Este método:
    * 1. Verifica que hay un usuario autenticado
-   * 2. Remueve la foto del array en memoria del usuario
-   * 3. Actualiza el almacenamiento del usuario
-   * 4. Elimina el archivo físico del dispositivo
+   * 2. Valida que el índice sea válido
+   * 3. Elimina el archivo físico del dispositivo primero
+   * 4. Remueve la foto del array en memoria del usuario
+   * 5. Actualiza el almacenamiento del usuario
    * 
    * @param photo - Objeto Photo a eliminar
    * @param position - Índice de la foto en el array
    * @returns Promise<void>
-   * @throws Error si no hay usuario autenticado
+   * @throws Error si no hay usuario autenticado, índice inválido o error al eliminar
    */
   public async deletePhoto(photo: Photo, position: number): Promise<void> {
     // Verificar que hay un usuario autenticado
@@ -255,22 +256,36 @@ export class PhotoService {
       throw new Error('Debes iniciar sesión para eliminar fotos.');
     }
 
-    // Remover foto del array en memoria del usuario
-    this.photos.splice(position, 1);
+    // Validar que el índice es válido
+    if (position < 0 || position >= this.photos.length) {
+      throw new Error('Índice de foto inválido.');
+    }
 
-    // Actualizar lista en almacenamiento persistente del usuario
-    const userStorageKey = this.getUserStorageKey();
-    await this.storage.set(userStorageKey, this.photos);
+    // Verificar que la foto en la posición coincide con la foto a eliminar
+    if (this.photos[position] !== photo) {
+      throw new Error('La foto seleccionada no coincide con la posición especificada.');
+    }
 
-    // Intentar eliminar el archivo físico del dispositivo
+    // Eliminar el archivo físico del dispositivo primero
     try {
       await Filesystem.deleteFile({
         path: photo.filepath,
         directory: Directory.Data
       });
+      console.log(`Archivo físico eliminado: ${photo.filepath}`);
     } catch (error) {
       console.error('Error eliminando archivo físico:', error);
-      // No relanzar el error para evitar interrumpir la operación
+      // Continuar con la eliminación de la lista incluso si el archivo físico falló
+      // El archivo podría ya no existir
     }
+
+    // Remover foto del array en memoria del usuario
+    this.photos.splice(position, 1);
+    console.log(`Foto removida de la posición ${position}. Fotos restantes: ${this.photos.length}`);
+
+    // Actualizar lista en almacenamiento persistente del usuario
+    const userStorageKey = this.getUserStorageKey();
+    await this.storage.set(userStorageKey, this.photos);
+    console.log('Lista de fotos actualizada en storage');
   }
 }

@@ -118,7 +118,7 @@ export class GalleryPage implements OnInit, OnDestroy {
 
   /**
    * Muestra una hoja de acciones con opciones para una foto seleccionada
-   * Actualmente solo permite eliminar la foto
+   * Actualmente solo permite eliminar la foto con confirmación
    * 
    * @param photo - Objeto Foto seleccionado
    * @param position - Índice de la foto en el array
@@ -131,7 +131,7 @@ export class GalleryPage implements OnInit, OnDestroy {
         role: 'destructive',
         icon: 'trash',
         handler: () => {
-          this.photoService.deletePhoto(photo, position);
+          this.confirmDeletePhoto(photo, position);
         }
       }, {
         text: 'Cancelar',
@@ -140,6 +140,59 @@ export class GalleryPage implements OnInit, OnDestroy {
       }]
     });
     await actionSheet.present();
+  }
+
+  /**
+   * Muestra un diálogo de confirmación antes de eliminar una foto
+   * y ejecuta la eliminación con manejo de errores
+   * 
+   * @param photo - Objeto Foto a eliminar
+   * @param position - Índice de la foto en el array
+   */
+  public async confirmDeletePhoto(photo: Photo, position: number): Promise<void> {
+    const alert = await this.alertController.create({
+      header: 'Confirmar eliminación',
+      message: '¿Estás seguro que quieres eliminar esta foto? Esta acción no se puede deshacer.',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          cssClass: 'alert-button-cancel'
+        },
+        {
+          text: 'Eliminar',
+          role: 'destructive',
+          cssClass: 'alert-button-confirm',
+          handler: async () => {
+            try {
+              await this.photoService.deletePhoto(photo, position);
+              
+              // Mostrar mensaje de éxito
+              const toast = await this.toastController.create({
+                message: 'Foto eliminada correctamente',
+                duration: 2000,
+                position: 'bottom',
+                color: 'success'
+              });
+              await toast.present();
+            } catch (error) {
+              console.error('Error al eliminar foto:', error);
+              
+              // Mostrar mensaje de error
+              const toast = await this.toastController.create({
+                message: 'Error al eliminar la foto. Inténtalo de nuevo.',
+                duration: 3000,
+                position: 'bottom',
+                color: 'danger'
+              });
+              await toast.present();
+            }
+          }
+        }
+      ]
+    });
+    
+    await alert.present();
   }
 
   /**
