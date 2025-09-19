@@ -1,0 +1,7 @@
+Nombre: Miguel Ángel Torres Díaz
+Materia: Desarrollo de aplicaciones híbridas
+Actividad: Actividad 4 - Ionic/Angular: Almacenamiento de datos
+Repositorio: https://github.com/migueltorresd/Gallery
+
+Nota:
+Por temas de máquina no fue posible correr el proyecto en el emulador de Android, pero se generaron los archivos necesarios para su ejecución nativa. El proyecto funciona correctamente en navegador (ionic serve) y se generó el proyecto Android con Capacitor (carpeta /android lista para compilar en Android Studio).

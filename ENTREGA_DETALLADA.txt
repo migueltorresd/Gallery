@@ -1,0 +1,161 @@
+===============================================================================
+                    ENTREGA ACTIVIDAD 4 - IONIC/ANGULAR
+===============================================================================
+
+ESTUDIANTE: Miguel Ángel Torres Díaz
+MATERIA: Desarrollo de aplicaciones híbridas  
+ACTIVIDAD: Actividad 4 - Ionic/Angular: Almacenamiento de datos
+FECHA: 19 de Septiembre, 2025
+
+===============================================================================
+                              INFORMACIÓN DEL PROYECTO
+===============================================================================
+
+NOMBRE DEL PROYECTO: Galería Cyber
+TIPO: Aplicación híbrida multiplataforma
+REPOSITORIO: https://github.com/migueltorresd/Gallery
+
+TECNOLOGÍAS UTILIZADAS:
+- Ionic Framework 8.0.0
+- Angular 20.0.0  
+- Capacitor 7.4.3
+- TypeScript 5.8.0
+- SCSS para estilos
+- RxJS 7.8.0
+
+===============================================================================
+                              FUNCIONALIDADES IMPLEMENTADAS
+===============================================================================
+
+✅ SISTEMA DE AUTENTICACIÓN:
+   - Login y registro de usuarios
+   - JWT simulado con payload completo
+   - Manejo de sesiones persistente
+   - Protección de rutas con guards
+   
+✅ ALMACENAMIENTO DE DATOS:
+   - Ionic Storage para metadatos
+   - Capacitor Filesystem para archivos físicos
+   - Almacenamiento separado por usuario
+   - Persistencia entre sesiones
+
+✅ GESTIÓN DE FOTOS:
+   - Captura con cámara del dispositivo
+   - Almacenamiento local por usuario
+   - Eliminación con confirmación
+   - Grid responsivo con diseño cyberpunk
+
+✅ CARACTERÍSTICAS ADICIONALES:
+   - Multi-usuario con aislamiento completo
+   - Diseño cyberpunk con efectos neón
+   - Feedback visual con toasts
+   - Manejo robusto de errores
+
+===============================================================================
+                              PLUGINS DE CAPACITOR
+===============================================================================
+
+- @capacitor/camera: Acceso a cámara del dispositivo
+- @capacitor/filesystem: Gestión de archivos locales
+- @capacitor/preferences: Almacenamiento de preferencias
+- @capacitor/android: Soporte nativo Android
+- @ionic/storage-angular: Base de datos local
+
+===============================================================================
+                              ESTRUCTURA DEL PROYECTO
+===============================================================================
+
+src/app/
+├── models/
+│   ├── auth.interface.ts    # Interfaces de autenticación
+│   └── photo.interface.ts   # Interfaces de fotos
+├── services/
+│   ├── auth.service.ts      # Servicio de autenticación
+│   └── photo.service.ts     # Servicio de gestión de fotos
+└── pages/
+    ├── auth/
+    │   ├── login/           # Página de login
+    │   └── register/        # Página de registro
+    └── gallery/             # Galería principal
+
+===============================================================================
+                              ALMACENAMIENTO DE DATOS
+===============================================================================
+
+IONIC STORAGE (SQLite/IndexedDB):
+- Metadatos de fotos por usuario
+- Tokens JWT de autenticación
+- Configuraciones de usuario
+
+CAPACITOR FILESYSTEM:
+- Archivos físicos de imágenes
+- Directorios separados por usuario
+- Nombres únicos con timestamp
+
+ESTRUCTURA DE DATOS:
+- "photos_user_1" → [array de fotos del usuario 1]
+- "photos_user_2" → [array de fotos del usuario 2]
+- "auth_token" → token JWT del usuario actual
+
+===============================================================================
+                              COMANDOS DE EJECUCIÓN
+===============================================================================
+
+DESARROLLO LOCAL:
+ionic serve
+
+CONSTRUCCIÓN:
+ionic build
+
+SINCRONIZACIÓN ANDROID:
+ionic cap sync android
+
+ABRIR ANDROID STUDIO:
+ionic cap open android
+
+===============================================================================
+                              NOTA IMPORTANTE
+===============================================================================
+
+Por temas de máquina no fue posible correr el proyecto en el emulador de 
+Android, pero se generaron todos los archivos necesarios para su ejecución 
+nativa. 
+
+El proyecto funciona correctamente en navegador web y se generó exitosamente 
+el proyecto Android con Capacitor (carpeta /android lista para compilar en 
+Android Studio).
+
+La aplicación está completamente funcional y lista para ser compilada en 
+cualquier dispositivo Android con los permisos y configuraciones apropiadas.
+
+===============================================================================
+                              DOCUMENTACIÓN ADICIONAL
+===============================================================================
+
+- README.md completo con screenshots del desarrollo
+- Video demo en YouTube: https://youtu.be/HNHyE5DPz78
+- Documentación técnica detallada
+- Changelog con historial de versiones
+- Guía de instalación paso a paso
+
+===============================================================================
+                              CREDENCIALES DEMO
+===============================================================================
+
+Para probar la aplicación:
+
+Usuario: admin@cyber.com  | Contraseña: admin123
+Usuario: demo@cyber.com   | Contraseña: demo123  
+Usuario: test@cyber.com   | Contraseña: test123
+
+También es posible crear nuevos usuarios mediante el formulario de registro.
+
+===============================================================================
+                              ENTREGADO POR
+===============================================================================
+
+Miguel Ángel Torres Díaz
+Desarrollo de aplicaciones híbridas
+Actividad 4 - Ionic/Angular: Almacenamiento de datos
+
+===============================================================================
