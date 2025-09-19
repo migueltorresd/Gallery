@@ -7,6 +7,16 @@
   <img src="https://img.shields.io/badge/Capacitor-7.4.3-black?style=for-the-badge&logo=capacitor" alt="Capacitor">
 </p>
 
+## 🎬 Demo en Video
+
+[![Galería Cyber - Demo Completo](https://img.youtube.com/vi/HNHyE5DPz78/maxresdefault.jpg)](https://youtu.be/HNHyE5DPz78)
+
+**[▶️ Ver Demo Completo en YouTube](https://youtu.be/HNHyE5DPz78)**
+
+*Video explicativo completo mostrando todas las funcionalidades de la aplicación*
+
+---
+
 ## 📖 Descripción
 
 **Galería Cyber** es una aplicación híbrida moderna desarrollada con Ionic 8 y Angular 20 que permite a los usuarios capturar, almacenar y gestionar fotografías con un diseño futurista cyberpunk. La aplicación incluye un sistema de autenticación completo con JWT simulado, almacenamiento separado por usuario y una interfaz visual impactante con efectos neón y animaciones holográficas.
@@ -29,8 +39,8 @@
 
 ```bash
 # Clonar e instalar
-git clone <repo-url>
-cd miAppTienda
+git clone https://github.com/migueltorresd/Gallery.git
+cd Gallery
 npm install
 
 # Ejecutar en navegador
@@ -46,6 +56,50 @@ ionic serve
 | `test`  | test@cyber.com | `test123`  | Usuario de pruebas |
 
 > **Nota**: Puedes crear nuevos usuarios usando el formulario de registro
+
+## 🏥 Desarrollo del Proyecto
+
+### 1. 📋 Configuración Proyecto Ionic + Angular + Capacitor
+
+![Configuración del Proyecto](./screenshots/1%20Configuración%20Proyecto%20Ionic%20+%20Angular%20+%20Capacitor.png)
+
+La configuración inicial del proyecto muestra:
+- **package.json** con todas las dependencias de Ionic 8, Angular 20 y Capacitor 7
+- **ionic.config.json** configurado para tipo Angular con integración Capacitor
+- **capacitor.config.ts** con la configuración base de la aplicación
+- Stack tecnológico completo listo para desarrollo híbrido
+
+### 2. 🔌 Definición y Configuración de Plugins
+
+![Plugins de Capacitor](./screenshots/2%20Definición%20y%20Configuración%20de%20Plugins.png)
+
+Plugins de Capacitor implementados:
+- **@capacitor/camera** - Acceso a la cámara del dispositivo
+- **@capacitor/filesystem** - Gestión de archivos locales  
+- **@capacitor/preferences** - Almacenamiento de preferencias
+- **@ionic/storage-angular** - Base de datos local
+- **@capacitor/android** - Soporte nativo para Android
+
+### 3. 📸 Servicio de Fotos
+
+![Servicio de Fotos](./screenshots/3%20Servicio%20de%20Fotos.png)
+
+El PhotoService implementa:
+- **Captura de fotos** con cámara nativa usando Capacitor Camera
+- **Almacenamiento por usuario** - cada usuario tiene su directorio privado
+- **Conversión Base64** para visualización en web
+- **Eliminación segura** con validaciones y confirmaciones
+- **Gestión de errores** robusta para recuperación automática
+
+### 4. 🤖 Migración a Android/iOS
+
+![Migración Android/iOS](./screenshots/4%20Migración%20a%20AndroidiOS.png)
+
+Capacitor facilita la migración nativa:
+- **Proyecto Android** generado automáticamente
+- **AndroidManifest.xml** configurado con permisos necesarios
+- **Gradle** configurado para compilación nativa
+- Listo para abrir en **Android Studio** y compilar APK
 
 ## 🏢️ Arquitectura Técnica
 
@@ -105,8 +159,8 @@ src/
 
 1. **Clonar el repositorio**
    ```bash
-   git clone <repository-url>
-   cd miAppTienda
+   git clone https://github.com/migueltorresd/Gallery.git
+   cd Gallery
    ```
 
 2. **Instalar dependencias**
@@ -455,6 +509,16 @@ Proyecto educativo desarrollado para aprendizaje de tecnologías híbridas.
 ---
 
 <p align="center">
-  <strong>🚀 Galera Cyber v2.1.0 - Ionic 8 + Angular 20 🚀</strong><br>
+  <strong>🚀 Galería Cyber v2.1.0 - Ionic 8 + Angular 20 🚀</strong><br>
   <em>Una experiencia cyberpunk completa con autenticación y galerías privadas</em>
 </p>
+
+## 👨‍💻 Autor
+
+**Miguel Torres**
+- GitHub: [@migueltorresd](https://github.com/migueltorresd)
+- Repositorio: [Gallery](https://github.com/migueltorresd/Gallery)
+
+---
+
+⭐ **Si te gustó el proyecto, dale una estrella en GitHub** ⭐
