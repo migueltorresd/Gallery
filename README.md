@@ -106,7 +106,7 @@ Capacitor facilita la migración nativa:
 ### Stack Tecnológico
 
 | Tecnología | Versión | Propósito |
-|------------|---------|-----------||
+|------------|---------|-----------|
 | **Ionic Framework** | 8.0.0 | Framework de UI híbrida |
 | **Angular** | 20.0.0 | Framework de desarrollo frontend |
 | **TypeScript** | 5.8.0 | Lenguaje de programación tipado |
